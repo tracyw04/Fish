@@ -1,11 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfq0t4iuphb5n"]
+[gd_scene load_steps=22 format=4 uid="uid://cfq0t4iuphb5n"]
 
 [ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://scripts/Player.cs" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://cm3w8dkwsq436" path="res://assets/sprites/spritesheet.png" id="2_kne1u"]
-[ext_resource type="Texture2D" uid="uid://cgqwkxj6ffw7v" path="res://assets/sprites/grass_block.png" id="2_uex2l"]
+[ext_resource type="Texture2D" uid="uid://dlxj8gb0lfjac" path="res://assets/sprites/grass.png" id="3_e80uo"]
+[ext_resource type="Texture2D" uid="uid://dowr2x6iwfgj2" path="res://assets/sprites/grassL.png" id="4_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://ld056uxl7uk6" path="res://assets/sprites/grassD.png" id="5_dtqjt"]
+[ext_resource type="Texture2D" uid="uid://chkiij318b3nm" path="res://assets/sprites/grassR.png" id="6_5ncpa"]
+[ext_resource type="Texture2D" uid="uid://dvn3hotmk2ptx" path="res://assets/sprites/grassU.png" id="7_wi0c6"]
+[ext_resource type="Texture2D" uid="uid://ctgipu4dhtkib" path="res://assets/sprites/water.png" id="8_5ncpa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5753"]
-radius = 7.0
+radius = 11.0
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_kne1u"]
 resource_name = "Idle"
@@ -44,12 +50,42 @@ _data = {
 &"RESET": SubResource("Animation_e80uo")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_87033"]
-texture = ExtResource("2_uex2l")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tdg3f"]
+texture = ExtResource("3_e80uo")
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_bo1oa"]
-sources/0 = SubResource("TileSetAtlasSource_87033")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtqjt"]
+texture = ExtResource("4_cxr5p")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp6x6"]
+texture = ExtResource("5_dtqjt")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3tkgg"]
+texture = ExtResource("6_5ncpa")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6ohk"]
+texture = ExtResource("7_wi0c6")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5ncpa"]
+sources/0 = SubResource("TileSetAtlasSource_tdg3f")
+sources/1 = SubResource("TileSetAtlasSource_dtqjt")
+sources/2 = SubResource("TileSetAtlasSource_hp6x6")
+sources/3 = SubResource("TileSetAtlasSource_3tkgg")
+sources/4 = SubResource("TileSetAtlasSource_l6ohk")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wi0c6"]
+texture = ExtResource("8_5ncpa")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hp6x6"]
+sources/0 = SubResource("TileSetAtlasSource_wi0c6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ncpa"]
+size = Vector2(16, 192)
 
 [node name="Main Scene" type="Node2D"]
 
@@ -66,6 +102,7 @@ texture = ExtResource("2_kne1u")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_f5753")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
@@ -73,8 +110,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_cxr5p")
 }
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_bo1oa")
-format = 2
-layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(-196611, 0, 0, -131075, 0, 0, -65539, 0, 0, -3, 0, 0, 65533, 0, 0, 131069, 0, 0, 196605, 0, 0, -196610, 0, 0, -131074, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 131070, 0, 0, 196606, 0, 0, 262142, 0, 0, -196609, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, -262143, 0, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, -262142, 0, 0, -196606, 0, 0, -131070, 0, 0, -65534, 0, 0, 2, 0, 0, 65538, 0, 0, -262141, 0, 0, -196605, 0, 0, -131069, 0, 0, -65533, 0, 0, -196612, 0, 0, -131076, 0, 0, -65540, 0, 0, -4, 0, 0, 65532, 0, 0, -196613, 0, 0, -131077, 0, 0, -65541, 0, 0, -5, 0, 0, 262145, 0, 0, 262146, 0, 0, 131073, 0, 0, 196609, 0, 0, 196610, 0, 0, 131074, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, -196604, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, -327679, 0, 0, -327680, 0, 0, -262145, 0, 0, -262146, 0, 0, -262147, 0, 0, -262148, 0, 0)
+[node name="Grass" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD+//7/AAAAAAAAAAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAAAAAAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8/wEAAAAAAAAAAAD7//3/AQAAAAAAAAD7//7/AQAAAAAAAAD7////AQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD7//z/AQAAAAAAAAD7//v/AQAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAD7/wIAAQAAAAAAAAD8//r/BAAAAAAAAAD9//r/BAAAAAAAAAD+//r/BAAAAAAAAAD///r/BAAAAAAAAAAAAPr/BAAAAAAAAAABAPr/BAAAAAAAAAACAPr/BAAAAAAAAAADAPv/AwAAAAAAAAADAPz/AwAAAAAAAAADAP3/AwAAAAAAAAAEAP7/AwAAAAAAAAAEAP//AwAAAAAAAAAEAAEAAwAAAAAAAAAEAAIAAwAAAAAAAAAEAAAAAwAAAAAAAAD8/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD//wMAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAACAAMAAgAAAAAAAAADAAMAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_5ncpa")
+
+[node name="Water" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD6//v/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAD7/wMAAAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_hp6x6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(-88, -16)
+shape = SubResource("RectangleShape2D_5ncpa")
