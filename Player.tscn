@@ -20,6 +20,10 @@ sources/0 = SubResource("TileSetAtlasSource_87033")
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_kne1u")
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_8bbxt")
