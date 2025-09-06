@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfq0t4iuphb5n"]
+[gd_scene load_steps=7 format=3 uid="uid://cfq0t4iuphb5n"]
 
 [ext_resource type="Texture2D" uid="uid://bewhdu6o5c84p" path="res://assets/sprites/Piplup_mainPlayer_temp.PNG" id="1_8bbxt"]
+[ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://Player.cs" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://cgqwkxj6ffw7v" path="res://assets/sprites/grass_block.png" id="2_uex2l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5753"]
@@ -17,6 +18,7 @@ sources/0 = SubResource("TileSetAtlasSource_87033")
 [node name="Main Scene" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_kne1u")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.01, 0.01)
