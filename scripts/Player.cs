@@ -31,19 +31,19 @@ public partial class Player : CharacterBody2D
 	{
 		if (Input.IsActionPressed("ui_left"))
 		{
-			
+			_animationPlayer.Play("WalkingL");
 		} 
 		else if (Input.IsActionPressed("ui_right")) 
 		{
-			
+			_animationPlayer.Play("WalkingR");
 		}
 		else if (Input.IsActionPressed("ui_up")) 
 		{
-			
+			_animationPlayer.Play("WalkingU");
 		}
 		else if (Input.IsActionPressed("ui_down")) 
 		{
-			
+			_animationPlayer.Play("WalkingF");
 		}
 		else
 		{
