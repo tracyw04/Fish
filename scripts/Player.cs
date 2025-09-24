@@ -3,14 +3,13 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	private int speed = 85;
+	private int speed = 105;
 	private Vector2 currentVelocity;
 	private AnimationPlayer _animationPlayer;
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
-		
 		handleInput();
 		
 		Velocity = currentVelocity;
