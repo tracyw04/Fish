@@ -1,15 +1,15 @@
 [gd_scene load_steps=29 format=4 uid="uid://cfq0t4iuphb5n"]
 
-[ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://scripts/Player.cs" id="1_kne1u"]
-[ext_resource type="Texture2D" uid="uid://1yx8mi6a02jl" path="res://assets/sprites/GirlPlayer.png" id="2_5ncpa"]
-[ext_resource type="Texture2D" uid="uid://dlxj8gb0lfjac" path="res://assets/sprites/grass.png" id="3_e80uo"]
-[ext_resource type="Texture2D" uid="uid://dowr2x6iwfgj2" path="res://assets/sprites/grassL.png" id="4_cxr5p"]
-[ext_resource type="Texture2D" uid="uid://ld056uxl7uk6" path="res://assets/sprites/grassD.png" id="5_dtqjt"]
-[ext_resource type="Texture2D" uid="uid://chkiij318b3nm" path="res://assets/sprites/grassR.png" id="6_5ncpa"]
-[ext_resource type="Texture2D" uid="uid://dvn3hotmk2ptx" path="res://assets/sprites/grassU.png" id="7_wi0c6"]
-[ext_resource type="Texture2D" uid="uid://ctgipu4dhtkib" path="res://assets/sprites/water.png" id="8_5ncpa"]
-[ext_resource type="Texture2D" uid="uid://chdv6pev2v2du" path="res://assets/sprites/fishingSpot.png" id="9_hp6x6"]
-[ext_resource type="Script" uid="uid://c22a7v5ru4wlo" path="res://FishingSpot.cs" id="10_3tkgg"]
+[ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://scripts/Player.cs" id="1_6eyey"]
+[ext_resource type="Texture2D" uid="uid://1yx8mi6a02jl" path="res://assets/sprites/GirlPlayer.png" id="2_d3wef"]
+[ext_resource type="Texture2D" uid="uid://dlxj8gb0lfjac" path="res://assets/sprites/grass.png" id="3_o4126"]
+[ext_resource type="Texture2D" uid="uid://dowr2x6iwfgj2" path="res://assets/sprites/grassL.png" id="4_lkdrv"]
+[ext_resource type="Texture2D" uid="uid://ld056uxl7uk6" path="res://assets/sprites/grassD.png" id="5_p7iby"]
+[ext_resource type="Texture2D" uid="uid://chkiij318b3nm" path="res://assets/sprites/grassR.png" id="6_0rnld"]
+[ext_resource type="Texture2D" uid="uid://dvn3hotmk2ptx" path="res://assets/sprites/grassU.png" id="7_srp4u"]
+[ext_resource type="Texture2D" uid="uid://ctgipu4dhtkib" path="res://assets/sprites/water.png" id="8_jfpux"]
+[ext_resource type="Texture2D" uid="uid://chdv6pev2v2du" path="res://assets/sprites/fishingSpot.png" id="9_61ith"]
+[ext_resource type="Script" uid="uid://c22a7v5ru4wlo" path="res://FishingSpot.cs" id="10_ebwui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5753"]
 radius = 9.0
@@ -121,23 +121,23 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tdg3f"]
-texture = ExtResource("3_e80uo")
+texture = ExtResource("3_o4126")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtqjt"]
-texture = ExtResource("4_cxr5p")
+texture = ExtResource("4_lkdrv")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp6x6"]
-texture = ExtResource("5_dtqjt")
+texture = ExtResource("5_p7iby")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3tkgg"]
-texture = ExtResource("6_5ncpa")
+texture = ExtResource("6_0rnld")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6ohk"]
-texture = ExtResource("7_wi0c6")
+texture = ExtResource("7_srp4u")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5ncpa"]
@@ -148,12 +148,12 @@ sources/3 = SubResource("TileSetAtlasSource_3tkgg")
 sources/4 = SubResource("TileSetAtlasSource_l6ohk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wi0c6"]
-texture = ExtResource("8_5ncpa")
+texture = ExtResource("8_jfpux")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oudfo"]
-texture = ExtResource("9_hp6x6")
+texture = ExtResource("9_61ith")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_hp6x6"]
@@ -162,13 +162,13 @@ sources/0 = SubResource("TileSetAtlasSource_wi0c6")
 sources/3 = SubResource("TileSetAtlasSource_oudfo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpx"]
-size = Vector2(32, 42)
+size = Vector2(33, 35)
 
 [node name="Main Scene" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 5
-script = ExtResource("1_kne1u")
+script = ExtResource("1_6eyey")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -176,7 +176,7 @@ position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_5ncpa")
+texture = ExtResource("2_d3wef")
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -199,8 +199,9 @@ tile_map_data = PackedByteArray("AAD6//r/AAAAAAAAAAD6//v/AAAAAAAAAAD6//z/AAAAAAA
 tile_set = SubResource("TileSet_hp6x6")
 
 [node name="FishingSpot" type="Area2D" parent="Water"]
-script = ExtResource("10_3tkgg")
+position = Vector2(88, -20)
+script = ExtResource("10_ebwui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(80, -24)
+position = Vector2(-8, 2)
 shape = SubResource("RectangleShape2D_d6rpx")
