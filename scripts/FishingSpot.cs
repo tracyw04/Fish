@@ -41,7 +41,6 @@ public partial class FishingSpot : Area2D
 	{
 		if (_playerInside != null && Input.IsActionJustPressed("Fish"))
 		{
-			GD.Print("You caught a Fish!");
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
 			 SpawnFish();
 			// Do whatever you want: open door, show dialog, trigger cutscene, etc.
@@ -70,8 +69,8 @@ public partial class FishingSpot : Area2D
 			fish_position = new Vector2(_playerInside.GlobalPosition.X - 18, _playerInside.GlobalPosition.Y+5);
 		}
 		
-		GD.Print("Player position ", _playerInside.GlobalPosition);
-		GD.Print("Player facing ", _playerInside.FacingDirection);
+		//GD.Print("Player position ", _playerInside.GlobalPosition);
+		//GD.Print("Player facing ", _playerInside.FacingDirection);
 		fish.GlobalPosition = fish_position; 
 		//GD.Print("Fish spawned at ", fish.GlobalPosition);
 	}
