@@ -162,7 +162,7 @@ sources/0 = SubResource("TileSetAtlasSource_wi0c6")
 sources/3 = SubResource("TileSetAtlasSource_oudfo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpx"]
-size = Vector2(33, 35)
+size = Vector2(32.5, 191)
 
 [node name="Main Scene" type="Node2D"]
 
@@ -203,5 +203,5 @@ position = Vector2(88, -20)
 script = ExtResource("10_ebwui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(-8, 2)
+position = Vector2(-8.25, 3.5)
 shape = SubResource("RectangleShape2D_d6rpx")

@@ -3,7 +3,7 @@ using System;
 
 public partial class FishingSpot : Area2D
 {
-	private bool _playerInside = false;
+	private Player _playerInside = null;
 	PackedScene _fishScene;
 	
 	public override void _Ready()
@@ -14,9 +14,9 @@ public partial class FishingSpot : Area2D
 
 	private void OnBodyEntered(Node body)
 	{
-		if (body is Player) // or body.IsInGroup("Player")
+		if (body is Player player) // or body.IsInGroup("Player")
 		{
-			_playerInside = true;
+			_playerInside = player;
 		}
 	}
 
@@ -24,13 +24,13 @@ public partial class FishingSpot : Area2D
 	{
 		if (body is Player)
 		{
-			_playerInside = false;
+			_playerInside = null;
 		}
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_playerInside && Input.IsActionJustPressed("Fish"))
+		if (_playerInside != null && Input.IsActionJustPressed("Fish"))
 		{
 			GD.Print("You caught a Fish!");
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
@@ -43,7 +43,8 @@ public partial class FishingSpot : Area2D
 	{
 		var fish = (Node2D)_fishScene.Instantiate();
 		GetParent().AddChild(fish);
-		fish.GlobalPosition = GlobalPosition; 
+		Vector2 fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y);
+		fish.GlobalPosition = fish_position; 
 		//GD.Print("Fish spawned at ", fish.GlobalPosition);
 	}
 }
