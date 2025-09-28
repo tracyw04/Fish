@@ -47,7 +47,8 @@ public partial class Raccoon : Area2D
 		{
 			SayLabel();
 			if (Input.IsActionJustPressed("Talk")) {
-				GD.Print("Talking");
+				text = "";
+				SayLabel();
 				fish.sellFish();
 			}
 		}
