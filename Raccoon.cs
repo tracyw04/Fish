@@ -4,7 +4,7 @@ using System;
 public partial class Raccoon : Area2D
 {
 	private Player _playerInside = null;
-	[Export] public string text = "Press [E] to sell fish";
+	[Export] public string text;
 	private Label sellFishText;
 	private FishingSpot fish;
 	
@@ -19,7 +19,7 @@ public partial class Raccoon : Area2D
 	
 	private void SayLabel()
 	{
-		sellFishText.Text = $" {text}";
+			sellFishText.Text = $" {text}";
 	}
 	
 	private void OnBodyEntered(Node body)
@@ -43,7 +43,7 @@ public partial class Raccoon : Area2D
 	
 	public override void _Process(double delta)
 	{
-		if (_playerInside != null)
+		if (_playerInside != null && fish.getFish() > 0)
 		{
 			SayLabel();
 			if (Input.IsActionJustPressed("Talk")) {

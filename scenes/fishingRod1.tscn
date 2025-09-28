@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b57p1cwi23sec"]
+
+[ext_resource type="Script" uid="uid://cmqsh83wxq8tw" path="res://StartingFishingRod.cs" id="1_bqhcy"]
+[ext_resource type="Texture2D" uid="uid://x2xm7jm8k67g" path="res://assets/sprites/fishingRod1.png" id="2_oggo2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4eag"]
+radius = 75.6454
+height = 309.06
+
+[node name="fishingRod" type="Node2D"]
+
+[node name="startingFishingRod" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_bqhcy")
+
+[node name="Sprite2D" type="Sprite2D" parent="startingFishingRod"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_oggo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="startingFishingRod"]
+position = Vector2(7, 3)
+rotation = 0.71733
+shape = SubResource("CapsuleShape2D_c4eag")
+
+[node name="Timer" type="Timer" parent="startingFishingRod"]
+one_shot = true
+
+[connection signal="timeout" from="startingFishingRod/Timer" to="startingFishingRod" method="_on_timer_timeout"]

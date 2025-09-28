@@ -8,6 +8,7 @@ public partial class FishingSpot : Area2D
 	[Export] public int numFishCaught = 0;
 	private Label _countLabel;
 	public int coins = 0;
+	private bool hasFishingRod = false;
 	
 	public override void _Ready()
 	{
@@ -15,6 +16,13 @@ public partial class FishingSpot : Area2D
 		BodyExited += OnBodyExited;
 		_countLabel = GetNode<Label>("../../CanvasLayer/Label");
 		UpdateCountLabel();
+	}
+	public int getFish() {
+		return numFishCaught;
+	}
+	
+	public void pickedUpFishingRod() {
+		hasFishingRod = true;
 	}
 	
 	public void sellFish() {
@@ -46,7 +54,7 @@ public partial class FishingSpot : Area2D
 
 	public override void _Process(double delta)
 	{
-		if (_playerInside != null && Input.IsActionJustPressed("Fish"))
+		if (_playerInside != null && Input.IsActionJustPressed("Fish") && hasFishingRod)
 		{
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
 			 SpawnFish();
