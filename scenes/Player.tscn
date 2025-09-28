@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cfq0t4iuphb5n"]
+[gd_scene load_steps=32 format=4 uid="uid://cfq0t4iuphb5n"]
 
 [ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://scripts/Player.cs" id="1_6eyey"]
 [ext_resource type="Texture2D" uid="uid://1yx8mi6a02jl" path="res://assets/sprites/GirlPlayer.png" id="2_d3wef"]
@@ -162,7 +162,16 @@ sources/0 = SubResource("TileSetAtlasSource_wi0c6")
 sources/3 = SubResource("TileSetAtlasSource_oudfo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpx"]
-size = Vector2(32.5, 191)
+size = Vector2(50.5, 191)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eyey"]
+size = Vector2(193, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3wef"]
+size = Vector2(46, 204)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4126"]
+size = Vector2(225, 44)
 
 [node name="Main Scene" type="Node2D"]
 
@@ -203,5 +212,17 @@ position = Vector2(88, -20)
 script = ExtResource("10_ebwui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(-8.25, 3.5)
+position = Vector2(0.75, 3.5)
 shape = SubResource("RectangleShape2D_d6rpx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Water/FishingSpot"]
+position = Vector2(-88.5, -84.5)
+shape = SubResource("RectangleShape2D_6eyey")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Water/FishingSpot"]
+position = Vector2(-178, 9)
+shape = SubResource("RectangleShape2D_d3wef")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Water/FishingSpot"]
+position = Vector2(-87.5, 88)
+shape = SubResource("RectangleShape2D_o4126")

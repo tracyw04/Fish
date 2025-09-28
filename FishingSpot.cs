@@ -43,7 +43,21 @@ public partial class FishingSpot : Area2D
 	{
 		var fish = (Node2D)_fishScene.Instantiate();
 		GetParent().AddChild(fish);
-		Vector2 fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y);
+		Vector2 fish_position;
+		//right quadrant
+		if (_playerInside.GlobalPosition.X >= 60) {
+			fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y+5);
+			//top quadrant
+		} else if (_playerInside.GlobalPosition.Y <= -90) {
+			fish_position = new Vector2(_playerInside.GlobalPosition.X, _playerInside.GlobalPosition.Y);
+			//bottom quadrant
+		} else if (_playerInside.GlobalPosition.Y >= 30) {
+			fish_position = new Vector2(_playerInside.GlobalPosition.X,_playerInside.GlobalPosition.Y+35);
+		} else {
+			fish_position = new Vector2(_playerInside.GlobalPosition.X - 18, _playerInside.GlobalPosition.Y+5);
+		}
+		
+		GD.Print("Player position ", _playerInside.GlobalPosition);
 		fish.GlobalPosition = fish_position; 
 		//GD.Print("Fish spawned at ", fish.GlobalPosition);
 	}
