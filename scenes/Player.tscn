@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=4 uid="uid://cfq0t4iuphb5n"]
+[gd_scene load_steps=33 format=4 uid="uid://cfq0t4iuphb5n"]
 
 [ext_resource type="Script" uid="uid://c6etbt770ukx8" path="res://scripts/Player.cs" id="1_6eyey"]
+[ext_resource type="PackedScene" uid="uid://csopjlnxge5v0" path="res://scenes/fishShop.tscn" id="1_d3wef"]
 [ext_resource type="Texture2D" uid="uid://1yx8mi6a02jl" path="res://assets/sprites/GirlPlayer.png" id="2_d3wef"]
 [ext_resource type="Texture2D" uid="uid://dlxj8gb0lfjac" path="res://assets/sprites/grass.png" id="3_o4126"]
 [ext_resource type="Texture2D" uid="uid://dowr2x6iwfgj2" path="res://assets/sprites/grassL.png" id="4_lkdrv"]
@@ -9,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dvn3hotmk2ptx" path="res://assets/sprites/grassU.png" id="7_srp4u"]
 [ext_resource type="Texture2D" uid="uid://ctgipu4dhtkib" path="res://assets/sprites/water.png" id="8_jfpux"]
 [ext_resource type="Texture2D" uid="uid://chdv6pev2v2du" path="res://assets/sprites/fishingSpot.png" id="9_61ith"]
-[ext_resource type="Script" uid="uid://c22a7v5ru4wlo" path="res://FishingSpot.cs" id="10_ebwui"]
+[ext_resource type="Script" uid="uid://c22a7v5ru4wlo" path="res://scripts/FishingSpot.cs" id="10_ebwui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5753"]
 radius = 9.0
@@ -162,16 +163,16 @@ sources/0 = SubResource("TileSetAtlasSource_wi0c6")
 sources/3 = SubResource("TileSetAtlasSource_oudfo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpx"]
-size = Vector2(50.5, 191)
+size = Vector2(42, 191)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6eyey"]
-size = Vector2(193, 47)
+size = Vector2(193, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3wef"]
-size = Vector2(46, 204)
+size = Vector2(40, 204)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4126"]
-size = Vector2(225, 44)
+size = Vector2(225, 35)
 
 [node name="Main Scene" type="Node2D"]
 
@@ -183,6 +184,8 @@ offset_bottom = 23.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 5
+collision_layer = 2
+collision_mask = 257
 script = ExtResource("1_6eyey")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -203,6 +206,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_cxr5p")
 }
 
+[node name="fishShop" parent="." instance=ExtResource("1_d3wef")]
+z_index = 3
+position = Vector2(0, -100)
+scale = Vector2(0.8, 0.8)
+
 [node name="Grass" type="TileMapLayer" parent="."]
 z_index = -1
 tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD+//7/AAAAAAAAAAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAAAAAAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8/wEAAAAAAAAAAAD7//3/AQAAAAAAAAD7//7/AQAAAAAAAAD7////AQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD7//z/AQAAAAAAAAD7//v/AQAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAD7/wIAAQAAAAAAAAD8//r/BAAAAAAAAAD9//r/BAAAAAAAAAD+//r/BAAAAAAAAAD///r/BAAAAAAAAAAAAPr/BAAAAAAAAAABAPr/BAAAAAAAAAACAPr/BAAAAAAAAAAEAP7/AwAAAAAAAAAEAP//AwAAAAAAAAAEAAEAAwAAAAAAAAAEAAIAAwAAAAAAAAAEAAAAAwAAAAAAAAD8/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD//wMAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAMAAgAAAAAAAAACAAMAAgAAAAAAAAADAAMAAgAAAAAAAAD7/wMAAQAAAAAAAAAEAAMAAwAAAAAAAAAEAP3/AwAAAAAAAAAEAPz/AwAAAAAAAAAEAPv/AwAAAAAAAAADAPr/BAAAAAAAAAAEAPr/BAAAAAAAAAD7//r/BAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAA=")
@@ -215,20 +223,21 @@ tile_set = SubResource("TileSet_hp6x6")
 
 [node name="FishingSpot" type="Area2D" parent="Water"]
 position = Vector2(88, -20)
+collision_mask = 2
 script = ExtResource("10_ebwui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(0.75, 3.5)
+position = Vector2(5, 3.5)
 shape = SubResource("RectangleShape2D_d6rpx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(-88.5, -84.5)
+position = Vector2(-88.5, -87)
 shape = SubResource("RectangleShape2D_6eyey")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(-178, 9)
+position = Vector2(-185, 9)
 shape = SubResource("RectangleShape2D_d3wef")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Water/FishingSpot"]
-position = Vector2(-87.5, 88)
+position = Vector2(-87.5, 92.5)
 shape = SubResource("RectangleShape2D_o4126")

@@ -60,11 +60,11 @@ public partial class FishingSpot : Area2D
 
 		if (_playerInside.GlobalPosition.X >= 60) {
 			fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y+5);
-			//top quadrant
-		} else if (_playerInside.GlobalPosition.Y <= -90) {
+			//top quadrantf
+		} else if (_playerInside.GlobalPosition.Y <= -95) {
 			fish_position = new Vector2(_playerInside.GlobalPosition.X, _playerInside.GlobalPosition.Y);
 			//bottom quadrant
-		} else if (_playerInside.GlobalPosition.Y >= 30) {
+		} else if (_playerInside.GlobalPosition.Y >= 24) {
 			fish_position = new Vector2(_playerInside.GlobalPosition.X,_playerInside.GlobalPosition.Y+35);
 		} else {
 			fish_position = new Vector2(_playerInside.GlobalPosition.X - 18, _playerInside.GlobalPosition.Y+5);

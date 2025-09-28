@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://csopjlnxge5v0"]
+
+[ext_resource type="Texture2D" uid="uid://cqx3rg2jnveny" path="res://assets/sprites/fishShop.png" id="1_vet1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay30v"]
+size = Vector2(10.5233, 3.05332)
+
+[node name="fishShop" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+z_index = 1
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_vet1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 5
+position = Vector2(0.999999, 23)
+rotation = -3.14159
+scale = Vector2(7.60219, 3.93015)
+shape = SubResource("RectangleShape2D_ay30v")
