@@ -7,6 +7,7 @@ public partial class FishingSpot : Area2D
 	PackedScene _fishScene;
 	[Export] public int numFishCaught = 0;
 	private Label _countLabel;
+	public int coins = 0;
 	
 	public override void _Ready()
 	{
@@ -16,9 +17,15 @@ public partial class FishingSpot : Area2D
 		UpdateCountLabel();
 	}
 	
+	public void sellFish() {
+		coins += numFishCaught;
+		numFishCaught = 0;
+		UpdateCountLabel();
+	}
+	
 	private void UpdateCountLabel()
 	{
-		_countLabel.Text = $"Fish: {numFishCaught}";
+		_countLabel.Text = $"Fish: {numFishCaught}\nMoney: ${coins}";
 	}
 
 	private void OnBodyEntered(Node body)

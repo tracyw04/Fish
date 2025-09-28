@@ -9,7 +9,6 @@ public partial class Fish : Node2D
 	{
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_animationPlayer.Play("Caught");
-		GD.Print("Starting animation");
 		var timer = GetNode<Timer>("Timer");
 		timer.Start();
 	}

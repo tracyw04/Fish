@@ -13,7 +13,7 @@ public partial class Raccoon : Area2D
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
 		sellFishText = GetNode<Label>("Label");
-		fish = GetNode<FishingSpot>("../../CanvasLayer/FishingSpot");
+		fish = GetNode<FishingSpot>("../../Water/FishingSpot");
 		
 	}
 	
@@ -47,7 +47,8 @@ public partial class Raccoon : Area2D
 		{
 			SayLabel();
 			if (Input.IsActionJustPressed("Talk")) {
-				
+				GD.Print("Talking");
+				fish.sellFish();
 			}
 		}
 	}
