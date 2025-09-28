@@ -7,6 +7,15 @@ public partial class Player : CharacterBody2D
 	private Vector2 currentVelocity;
 	private AnimationPlayer _animationPlayer;
 	
+	public enum Direction
+	{
+		Up,
+		Down,
+		Left,
+		Right
+	}
+	public Direction FacingDirection { get; private set; } = Direction.Down;
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
@@ -31,22 +40,27 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionPressed("ui_left"))
 		{
 			_animationPlayer.Play("WalkingL");
+			FacingDirection = Direction.Left;
 		} 
 		else if (Input.IsActionPressed("ui_right")) 
 		{
 			_animationPlayer.Play("WalkingR");
+			FacingDirection = Direction.Right;
 		}
 		else if (Input.IsActionPressed("ui_up")) 
 		{
 			_animationPlayer.Play("WalkingU");
+			FacingDirection = Direction.Up;
 		}
 		else if (Input.IsActionPressed("ui_down")) 
 		{
 			_animationPlayer.Play("WalkingF");
+			FacingDirection = Direction.Down;
 		}
 		else
 		{
 			_animationPlayer.Play("Idle");
+			FacingDirection = Direction.Down;
 		}
 	}
 }

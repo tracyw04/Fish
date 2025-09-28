@@ -5,11 +5,20 @@ public partial class FishingSpot : Area2D
 {
 	private Player _playerInside = null;
 	PackedScene _fishScene;
+	[Export] public int numFishCaught = 0;
+	private Label _countLabel;
 	
 	public override void _Ready()
 	{
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
+		_countLabel = GetNode<Label>("../../CanvasLayer/Label");
+		UpdateCountLabel();
+	}
+	
+	private void UpdateCountLabel()
+	{
+		_countLabel.Text = $"Fish: {numFishCaught}";
 	}
 
 	private void OnBodyEntered(Node body)
@@ -36,6 +45,8 @@ public partial class FishingSpot : Area2D
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
 			 SpawnFish();
 			// Do whatever you want: open door, show dialog, trigger cutscene, etc.
+			numFishCaught++;
+			UpdateCountLabel();
 		}
 	}
 	
@@ -45,6 +56,8 @@ public partial class FishingSpot : Area2D
 		GetParent().AddChild(fish);
 		Vector2 fish_position;
 		//right quadrant
+		var facingDir = _playerInside.FacingDirection;
+
 		if (_playerInside.GlobalPosition.X >= 60) {
 			fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y+5);
 			//top quadrant
@@ -58,6 +71,7 @@ public partial class FishingSpot : Area2D
 		}
 		
 		GD.Print("Player position ", _playerInside.GlobalPosition);
+		GD.Print("Player facing ", _playerInside.FacingDirection);
 		fish.GlobalPosition = fish_position; 
 		//GD.Print("Fish spawned at ", fish.GlobalPosition);
 	}

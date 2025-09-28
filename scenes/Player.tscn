@@ -175,6 +175,12 @@ size = Vector2(225, 44)
 
 [node name="Main Scene" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 5
 script = ExtResource("1_6eyey")
