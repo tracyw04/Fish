@@ -10,7 +10,7 @@ public partial class Fish : Node2D
 	
 	public static Dictionary<string, FishData> FishTypes = new Dictionary<string, FishData>
 	{
-		{ "blue", new FishData("blueFish", 1, GD.Load<Texture2D>("res://assets/sprites/fish.png")) },
+		{ "blue", new FishData("blue", 1, GD.Load<Texture2D>("res://assets/sprites/fish.png")) },
 		{ "shark",  new FishData("shark", 10, GD.Load<Texture2D>("res://assets/sprites/shark.png")) }
 	};
 	
@@ -37,8 +37,10 @@ public partial class Fish : Node2D
 			this.Name = "shark";
 			this.Value = FishTypes["shark"].Value;
 		} else {//blueFish
-			this.Name = "blueFish";
-			this.Value = FishTypes["blueFish"].Value;
+			sprite.Texture = FishTypes["blue"].Texture;
+			sprite.Scale = new Vector2(1f, 1f);
+			this.Name = "blue";
+			this.Value = FishTypes["blue"].Value;
 		}
 	}
 	
