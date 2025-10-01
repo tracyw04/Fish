@@ -6,7 +6,7 @@ public partial class Player : CharacterBody2D
 	private int speed = 105;
 	private Vector2 currentVelocity;
 	private AnimationPlayer _animationPlayer;
-	
+    private Inventory bag;
 	public enum Direction
 	{
 		Up,
@@ -29,10 +29,11 @@ public partial class Player : CharacterBody2D
 		currentVelocity = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		currentVelocity *= speed;
 	}
-	
-	 public override void _Ready()
-	{
-		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
+    public override void _Ready()
+    {
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        bag = GetNode<Inventory>("Inventory");
 	}
 	
 	public override void _Process(double delta)
