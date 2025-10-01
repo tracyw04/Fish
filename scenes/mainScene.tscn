@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=4 uid="uid://cfq0t4iuphb5n"]
 
-[ext_resource type="PackedScene" uid="uid://bv6hm6h4308c8" path="res://scenes/player.tscn" id="1_2n1xb"]
+[ext_resource type="PackedScene" uid="uid://bv6hm6h4308c8" path="res://scenes/Player.tscn" id="1_2n1xb"]
 [ext_resource type="PackedScene" uid="uid://csopjlnxge5v0" path="res://scenes/fishShop.tscn" id="3_3tio3"]
 [ext_resource type="PackedScene" uid="uid://b57p1cwi23sec" path="res://scenes/fishingRod1.tscn" id="4_ha8th"]
 [ext_resource type="Texture2D" uid="uid://dlxj8gb0lfjac" path="res://assets/sprites/grass.png" id="4_jmmcx"]
