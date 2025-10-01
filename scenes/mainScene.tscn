@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cfq0t4iuphb5n"]
+[gd_scene load_steps=27 format=4 uid="uid://cfq0t4iuphb5n"]
 
 [ext_resource type="PackedScene" uid="uid://bv6hm6h4308c8" path="res://scenes/Player.tscn" id="1_2n1xb"]
 [ext_resource type="PackedScene" uid="uid://csopjlnxge5v0" path="res://scenes/fishShop.tscn" id="3_3tio3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://chdv6pev2v2du" path="res://assets/sprites/fishingSpot.png" id="10_1s0h2"]
 [ext_resource type="PackedScene" uid="uid://ckamhwrtbnr8f" path="res://scenes/raccoon.tscn" id="11_fp4eh"]
 [ext_resource type="Script" uid="uid://c22a7v5ru4wlo" path="res://scripts/FishingSpot.cs" id="11_w72fx"]
+[ext_resource type="PackedScene" uid="uid://bu7jxljle8mik" path="res://scenes/inventory.tscn" id="13_3tio3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tdg3f"]
 texture = ExtResource("4_jmmcx")
@@ -73,6 +74,8 @@ size = Vector2(225, 35)
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Inventory" parent="." instance=ExtResource("13_3tio3")]
 
 [node name="Player" parent="." instance=ExtResource("1_2n1xb")]
 collision_mask = 261

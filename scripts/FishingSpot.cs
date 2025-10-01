@@ -30,10 +30,10 @@ public partial class FishingSpot : Area2D
 		numFishCaught = 0;
 		UpdateCountLabel();
 	}
-	
+
 	private void UpdateCountLabel()
 	{
-		_countLabel.Text = $"Fish: {numFishCaught}\nMoney: ${coins}";
+		_countLabel.Text = $"Fish: {numFishCaught}\nMoney: ${coins}\n";
 	}
 
 	private void OnBodyEntered(Node body)
@@ -58,7 +58,6 @@ public partial class FishingSpot : Area2D
 		{
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
 			 SpawnFish();
-			// Do whatever you want: open door, show dialog, trigger cutscene, etc.
 			numFishCaught++;
 			UpdateCountLabel();
 		}
@@ -66,12 +65,12 @@ public partial class FishingSpot : Area2D
 	
 	private void SpawnFish()
 	{
-		var fish = (Node2D)_fishScene.Instantiate();
+		var fish = (Fish)_fishScene.Instantiate();
 		GetParent().AddChild(fish);
-		Vector2 fish_position;
-		//right quadrant
-		var facingDir = _playerInside.FacingDirection;
+		_playerInside.addToBag(fish);
 
+		Vector2 fish_position;
+		var facingDir = _playerInside.FacingDirection;
 		if (_playerInside.GlobalPosition.X >= 60) {
 			fish_position = new Vector2(GlobalPosition.X, _playerInside.GlobalPosition.Y+5);
 			//top quadrantf
@@ -83,10 +82,6 @@ public partial class FishingSpot : Area2D
 		} else {
 			fish_position = new Vector2(_playerInside.GlobalPosition.X - 18, _playerInside.GlobalPosition.Y+5);
 		}
-		
-		//GD.Print("Player position ", _playerInside.GlobalPosition);
-		//GD.Print("Player facing ", _playerInside.FacingDirection);
 		fish.GlobalPosition = fish_position; 
-		//GD.Print("Fish spawned at ", fish.GlobalPosition);
 	}
 }
