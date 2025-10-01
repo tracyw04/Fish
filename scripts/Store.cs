@@ -23,7 +23,10 @@ public partial class Store : Control
 		for (int i = 0; i < RodTypes.Count; i++) {
 			Texture2D before = RodTypes[i].Texture;
 			Texture2D newRod = resized(before);
-			menu.AddIconItem(newRod, RodTypes[i].Name);
+			string name = RodTypes[i].Name;
+			int value = RodTypes[i].Value;
+			string itemText = $"{name}: Cost: {value}";
+			menu.AddIconItem(newRod, itemText);
 		}
 	}
 	
