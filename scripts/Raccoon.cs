@@ -6,6 +6,7 @@ public partial class Raccoon : Area2D
 	private Player _playerInside = null;
 	[Export] public string text;
 	private Label sellFishText;
+	private Store shop;
 	
 	public override void _Ready()
 	{
@@ -24,7 +25,7 @@ public partial class Raccoon : Area2D
 		if (body is Player player) 
 		{
 			_playerInside = player;
-			text = "Press [E] to sell fish";
+			text = "Press [E] to sell fish\nPress[R] to open menu";
 		}
 	}
 
@@ -40,7 +41,7 @@ public partial class Raccoon : Area2D
 	
 	public override void _Process(double delta)
 	{
-		if (_playerInside != null && _playerInside.getBagSize() > 0)
+		if (_playerInside != null)
 		{
 			SayLabel();
 			if (Input.IsActionJustPressed("Talk"))
@@ -48,6 +49,9 @@ public partial class Raccoon : Area2D
 				text = "";
 				SayLabel();
 				_playerInside.makeProfit();
+			} else if (Input.IsActionJustPressed("Shop")) {
+				shop = GetNode<Store>("../Store");
+				shop.ShowMenu();
 			}
 		}
 	}
