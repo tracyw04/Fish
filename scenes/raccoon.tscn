@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckamhwrtbnr8f"]
 
-[ext_resource type="Script" uid="uid://dbuybmvfdvkpp" path="res://Raccoon.cs" id="1_fnbhh"]
+[ext_resource type="Script" uid="uid://dbuybmvfdvkpp" path="res://scripts/Raccoon.cs" id="1_fnbhh"]
 [ext_resource type="Texture2D" uid="uid://b5sewfqq0dr6b" path="res://assets/sprites/raccoon.png" id="2_wngsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh22s"]

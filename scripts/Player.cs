@@ -7,6 +7,9 @@ public partial class Player : CharacterBody2D
 	private Vector2 currentVelocity;
 	private AnimationPlayer _animationPlayer;
 	private Inventory bag;
+	private int coins;
+	private Label mainLabel;
+	private bool hasFishingRod = false;
 	public enum Direction
 	{
 		Up,
@@ -35,7 +38,9 @@ public partial class Player : CharacterBody2D
 	{
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		bag = GetNode<Inventory>("../Inventory");
-		GD.Print(bag.getStorageSize());
+		coins = 0;
+		mainLabel = GetNode<Label>("../CanvasLayer/Label");
+		UpdateLabel();
 	}
 
 	public override void _Process(double delta)
@@ -70,11 +75,36 @@ public partial class Player : CharacterBody2D
 	public void addToBag(Fish f)
 	{
 		bag.addToStorage(Fish.FishTypes[f.Name]);
-		GD.Print($"added: {bag.getStorageSize()}");
 	}
 
-	public string getBag()
+	public void makeProfit()
 	{
-		return this.bag.startText;
+		coins += bag.sell();
+		UpdateLabel();
+	}
+
+	private void UpdateLabel()
+	{
+		mainLabel.Text = $"Money: ${this.coins}\n";
+	}
+
+	public void pickedUpFishingRod()
+	{
+		hasFishingRod = true;
+	}
+
+	public int getBagSize()
+	{
+		return this.bag.getStorageSize();
+	}
+
+	public int getCoins()
+	{
+		return this.coins;
+	}
+
+	public bool getHasFishingRod()
+	{
+		return this.hasFishingRod;
 	}
 }

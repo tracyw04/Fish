@@ -6,7 +6,6 @@ public partial class Fish : Node2D
 {
 	private AnimationPlayer _animationPlayer;
 	public string Name;
-	public int Value;
 	
 	public static Dictionary<string, FishData> FishTypes = new Dictionary<string, FishData>
 	{
@@ -35,12 +34,10 @@ public partial class Fish : Node2D
 			sprite.Texture = FishTypes["shark"].Texture;
 			sprite.Scale = new Vector2(0.03f, 0.03f);
 			this.Name = "shark";
-			this.Value = FishTypes["shark"].Value;
 		} else {//blueFish
 			sprite.Texture = FishTypes["blue"].Texture;
 			sprite.Scale = new Vector2(1f, 1f);
 			this.Name = "blue";
-			this.Value = FishTypes["blue"].Value;
 		}
 	}
 	

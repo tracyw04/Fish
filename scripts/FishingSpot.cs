@@ -5,40 +5,16 @@ public partial class FishingSpot : Area2D
 {
 	private Player _playerInside = null;
 	PackedScene _fishScene;
-	[Export] public int numFishCaught = 0;
-	private Label _countLabel;
-	public int coins = 0;
-	private bool hasFishingRod = false;
 	
 	public override void _Ready()
 	{
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
-		_countLabel = GetNode<Label>("../../CanvasLayer/Label");
-		UpdateCountLabel();
-	}
-	public int getFish() {
-		return numFishCaught;
-	}
-	
-	public void pickedUpFishingRod() {
-		hasFishingRod = true;
-	}
-	
-	public void sellFish() {
-		coins += numFishCaught;
-		numFishCaught = 0;
-		UpdateCountLabel();
-	}
-
-	private void UpdateCountLabel()
-	{
-		_countLabel.Text = $"Fish: {numFishCaught}\nMoney: ${coins}\n";
 	}
 
 	private void OnBodyEntered(Node body)
 	{
-		if (body is Player player) // or body.IsInGroup("Player")
+		if (body is Player player) 
 		{
 			_playerInside = player;
 		}
@@ -54,12 +30,10 @@ public partial class FishingSpot : Area2D
 
 	public override void _Process(double delta)
 	{
-		if (_playerInside != null && Input.IsActionJustPressed("Fish") && hasFishingRod)
+		if (_playerInside != null && Input.IsActionJustPressed("Fish") && _playerInside.getHasFishingRod())
 		{
 			_fishScene = GD.Load<PackedScene>("res://scenes//fish.tscn");
 			 SpawnFish();
-			numFishCaught++;
-			UpdateCountLabel();
 		}
 	}
 	
